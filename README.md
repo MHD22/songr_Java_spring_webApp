@@ -19,6 +19,11 @@ You can go to other pages directly like:
 * `http://localhost:8080/capitalize/`*your text here* => to capitalize your text and display it on the browser.
 * `http://localhost:8080/albums` => to show the top three albums and their details.
 
+### OR from CLI:
+
+* Go to the root directory
+* Run the following command `./gradlew bootRun`
+
 ### ___________________
 
 ## to test the App:
