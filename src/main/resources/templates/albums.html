@@ -18,7 +18,7 @@
     </style>
 </head>
 <body>
-<h2>Top Three Albums:</h2>
+<h2>All Albums:</h2>
 <div th:each="album : ${albums}">
     <p>Title: <span th:text=${album.title}></span></p>
     <p>Artist: <span th:text="${album.artist}"></span></p>
@@ -28,5 +28,6 @@
     <a th:href=@{${album.imageUrl}}>Image url</a>
     <hr>
 </div>
+
 </body>
 </html>
