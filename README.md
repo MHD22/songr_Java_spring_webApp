@@ -6,18 +6,26 @@ It's a simple full-stack web app using Spring Boot.
 
 ## to run the App:
 
-* clone it 
-* open using IDE
+* ***You need to create and configure a postgres DB named albums => check the `application.properties` file***
+* clone the repo. 
+* open it using IDE
 * run the `SongrApplication` class
 * open your browser
 * go to `http://localhost:8080`
+
 
 you will see the home page of Songr app..
 
 You can go to other pages directly like:
 * `http://localhost:8080/hello` => to print hello world
 * `http://localhost:8080/capitalize/`*your text here* => to capitalize your text and display it on the browser.
-* `http://localhost:8080/albums` => to show the top three albums and their details.
+* `http://localhost:8080/albums` => to show the all albums and their details.
+* `http://localhost:8080/addAlbum` => to add new album
+
+### OR from CLI:
+
+* Go to the root directory
+* Run the following command `./gradlew bootRun`
 
 ### OR from CLI:
 

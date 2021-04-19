@@ -1,8 +1,12 @@
 package com.example.songr;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,17 +14,29 @@ import java.util.List;
 @Controller
 public class AlbumController {
 
+    @Autowired
+    AlbumRepository albumRepository;
+
     @GetMapping("/albums")
     public String getThreeAlbums(Model m){
-        Album album1 = new Album("A7la w a7la", "Amr Diab",6,1440,"https://i.ytimg.com/vi/8IJIP1OUbMM/maxresdefault.jpg");
-        Album album2 = new Album("pain", "Ryan Jones",8,1870,"https://d1csarkz8obe9u.cloudfront.net/posterpreviews/artistic-album-cover-design-template-d12ef0296af80b58363dc0deef077ecc_screen.jpg?ts=1561488440");
-        Album album3 = new Album("new Album", "Rihana",5,1200,"https://d16kd6gzalkogb.cloudfront.net/magazine_images/Rihanna-New-Cover-Art-3.jpg");
-        List<Album> albums = new ArrayList<>();
-        albums.add(album1);
-        albums.add(album2);
-        albums.add(album3);
+        List<Album> albums = (List<Album>) albumRepository.findAll();
         m.addAttribute("albums",albums);
-
         return "albums";
     }
+    @GetMapping("/addAlbum")
+    public String viewAddAlbumForm(){
+        return "addAlbum";
+    }
+    @PostMapping("/addAlbum")
+    public RedirectView addAlbumToDB(Model m,
+                                     @RequestParam(value="title") String title,
+                                     @RequestParam(value="artist") String artist,
+                                     @RequestParam(value="songCount") int songCount,
+                                     @RequestParam(value="length") int length,
+                                     @RequestParam(value="imageUrl") String imageUrl){
+        Album album = new Album(title,artist,songCount,length,imageUrl);
+        albumRepository.save(album);
+        return new RedirectView("/albums");
+    }
+
 }
