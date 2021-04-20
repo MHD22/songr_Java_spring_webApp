@@ -18,14 +18,21 @@
     </style>
 </head>
 <body>
-<h2>All Albums:</h2>
+<h2>Albums:</h2>
 <div th:each="album : ${albums}">
+    <p>ID: <span th:text=${album.id}></span></p>
     <p>Title: <span th:text=${album.title}></span></p>
     <p>Artist: <span th:text="${album.artist}"></span></p>
     <p>Song Count: <span th:text="${album.songCount}"></span></p>
     <p>Length: <span th:text="${album.length}"></span></p>
-<!--    <p>Image url: <span th:text="${album.imageUrl}"></span></p>-->
     <a th:href=@{${album.imageUrl}}>Image url</a>
+    <p>Songs: </p>
+    <ul style="display:inline-block" th:each="song : ${album.songs}">
+        <li>Song ID: <span th:text=${song.id}></span></li>
+        <li>Song Title: <span th:text=${song.title}></span></li>
+        <li>Song Length: <span th:text=${song.length}></span></li>
+        <li>Track Number: <span th:text=${song.trackNumber}></span></li>
+    </ul>
     <hr>
 </div>
 
