@@ -8,7 +8,7 @@ public class AlbumTest {
 
     @Test
     void testConstructorOfAlbumClass() {
-        Album album1 = new Album("A7la w a7la", "Amr Diab",6,1440,"https://i.ytimg.com/vi/8IJIP1OUbMM/maxresdefault.jpg");
+        Album album1 = new Album("A7la w a7la", "Amr Diab","https://i.ytimg.com/vi/8IJIP1OUbMM/maxresdefault.jpg");
         String output = album1.toString();
         String expected = "Album{title='A7la w a7la', artist='Amr Diab', songCount=6, length=1440, imageUrl='https://i.ytimg.com/vi/8IJIP1OUbMM/maxresdefault.jpg'}";
         assertEquals(expected,output);
@@ -16,7 +16,7 @@ public class AlbumTest {
 
     @Test
     void testSetterAndGetterOfAlbumClass() {
-        Album album1 = new Album("A7la w a7la", "Amr Diab",6,1440,"https://i.ytimg.com/vi/8IJIP1OUbMM/maxresdefault.jpg");
+        Album album1 = new Album("A7la w a7la", "Amr Diab","https://i.ytimg.com/vi/8IJIP1OUbMM/maxresdefault.jpg");
         album1.setSongCount(10);
         int output = album1.getSongCount();
         int expected = 10;

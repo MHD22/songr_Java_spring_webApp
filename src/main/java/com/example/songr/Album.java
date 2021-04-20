@@ -1,27 +1,46 @@
 package com.example.songr;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonView;
+
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Album {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY )
+    @JsonView({Views.Internal.class, Views.Public.class})
     private long id;
+
+    @JsonView({Views.Internal.class, Views.Public.class})
     private String title;
+
+    @JsonView({Views.Internal.class, Views.Public.class})
     private String artist;
+
+    @JsonView({Views.Internal.class, Views.Public.class})
     private int songCount;
+
+    @JsonView({Views.Internal.class, Views.Public.class})
     private int length;
+
+    @JsonView({Views.Internal.class, Views.Public.class})
     private String imageUrl;
 
-    public Album(String title, String artist, int songCount, int length, String imageUrl){
+    @JsonView(Views.Internal.class)
+    @OneToMany(mappedBy="album",cascade = CascadeType.ALL)
+    List<Song> songs;
+
+    public Album(String title, String artist, String imageUrl) {
         this.title = title;
         this.artist = artist;
-        this.songCount = songCount;
-        this.length = length;
+        this.songCount = 0;
+        this.length = 0;
         this.imageUrl = imageUrl;
+    }
+
+    public List<Song> getSongs() {
+        return songs;
     }
 
     protected Album() {
@@ -65,6 +84,10 @@ public class Album {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public long getId() {
+        return id;
     }
 
     @Override

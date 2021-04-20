@@ -20,7 +20,12 @@ You can go to other pages directly like:
 * `http://localhost:8080/hello` => to print hello world
 * `http://localhost:8080/capitalize/`*your text here* => to capitalize your text and display it on the browser.
 * `http://localhost:8080/albums` => to show the all albums and their details.
+* `http://localhost:8080/albums/``albumID` => to show the details of a specific Album
 * `http://localhost:8080/addAlbum` => to add new album
+* `http://localhost:8080/addSong` => to add new Song
+* `http://localhost:8080/Songs` => to show the all songs
+
+
 
 ### OR from CLI:
 
