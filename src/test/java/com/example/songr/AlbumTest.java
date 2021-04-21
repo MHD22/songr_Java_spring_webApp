@@ -10,7 +10,7 @@ public class AlbumTest {
     void testConstructorOfAlbumClass() {
         Album album1 = new Album("A7la w a7la", "Amr Diab","https://i.ytimg.com/vi/8IJIP1OUbMM/maxresdefault.jpg");
         String output = album1.toString();
-        String expected = "Album{title='A7la w a7la', artist='Amr Diab', songCount=6, length=1440, imageUrl='https://i.ytimg.com/vi/8IJIP1OUbMM/maxresdefault.jpg'}";
+        String expected = "Album{title='A7la w a7la', artist='Amr Diab', songCount=0, length=0, imageUrl='https://i.ytimg.com/vi/8IJIP1OUbMM/maxresdefault.jpg'}";
         assertEquals(expected,output);
     }
 
